@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pappa's Kitchen | Wood-Fired Pizza & Pasta · Nelspruit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__logo">
+      <span class="nav__logo-icon">🍕</span>
+      <span class="nav__logo-text">Pappa's Kitchen</span>
+    </div>
+    <button class="nav__burger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#hours">Visit Us</a></li>
+      <li><a href="order.html" class="nav__cta">Order Online</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero__bg-layer hero__bg-layer--1"></div>
+    <div class="hero__bg-layer hero__bg-layer--2"></div>
+    <div class="hero__embers" id="embers"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal">Nelspruit · Est. 1989</p>
+      <h1 class="hero__title reveal delay-1">
+        <span class="hero__title-line">Pappa's</span>
+        <em class="hero__title-line">Kitchen</em>
+      </h1>
+      <p class="hero__tagline reveal delay-2">Pizza &nbsp;•&nbsp; Pasta &nbsp;•&nbsp; Pronto</p>
+      <div class="hero__actions reveal delay-3">
+        <a href="order.html" class="btn btn--primary">Order Now</a>
+        <a href="#hours" class="btn btn--ghost">Find Us</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-hint">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- BADGE STRIP -->
+  <div class="badge-strip">
+    <div class="badge-strip__inner">
+      <span>🔥 Wood-Fired Oven</span>
+      <span class="sep">—</span>
+      <span>🍕 Since 1989</span>
+      <span class="sep">—</span>
+      <span>🌿 Vegetarian Friendly</span>
+      <span class="sep">—</span>
+      <span>🎵 Live Music Sundays</span>
+      <span class="sep">—</span>
+      <span>🛵 Delivery Available</span>
+      <span class="sep">—</span>
+      <span>🔥 Wood-Fired Oven</span>
+      <span class="sep">—</span>
+      <span>🍕 Since 1989</span>
+      <span class="sep">—</span>
+      <span>🌿 Vegetarian Friendly</span>
+      <span class="sep">—</span>
+      <span>🎵 Live Music Sundays</span>
+      <span class="sep">—</span>
+      <span>🛵 Delivery Available</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about section" id="about">
+    <div class="container about__inner">
+      <div class="about__image-block reveal-left">
+        <div class="about__img-frame">
+          <div class="about__img-fill">
+            <img src="images/hero-img.webp">
+          </div>
+          <div class="about__img-ornament">🍕</div>
+        </div>
+        <div class="about__since-badge">
+          <span class="about__since-year">1989</span>
+          <span class="about__since-text">Est.</span>
+        </div>
+      </div>
+      <div class="about__text reveal-right">
+        <p class="section__label">Our Story</p>
+        <h2 class="section__title">Feeding Nelspruit<br/><em>for over 35 years</em></h2>
+        <p class="about__body">Since 1989, Pappa's Kitchen has been the beating heart of Italian dining in Nelspruit. We built our reputation on one simple belief: great food starts with a great fire. Our wood-fired ovens have been burning continuously, delivering pizzas with that unmistakable char and smoky depth that no electric oven can replicate.</p>
+        <p class="about__body">From our famous <strong>Pappas Special</strong> to our handmade pastas and fresh focaccia, every dish honours old-world Italian tradition with a warm South African welcome.</p>
+        <div class="about__stats">
+          <div class="stat">
+            <span class="stat__num">35+</span>
+            <span class="stat__label">Years serving</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">4.2★</span>
+            <span class="stat__label">Google rating</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num">2 000+</span>
+            <span class="stat__label">Happy reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section section" id="menu">
+    <div class="menu-section__bg"></div>
+    <div class="container">
+      <div class="section__header reveal">
+        <p class="section__label">What We Serve</p>
+        <h2 class="section__title">From the Kitchen</h2>
+        <p class="section__sub">All pizzas are baked fresh in our wood-fired oven. Ask your server about daily specials.</p>
+      </div>
+
+      <!-- TABS -->
+      <div class="menu-tabs reveal">
+        <button class="tab-btn active" data-tab="pizza">🍕 Pizza</button>
+        <button class="tab-btn" data-tab="pasta">🍝 Pasta</button>
+        <button class="tab-btn" data-tab="mains">🥗 Mains & Salads</button>
+        <button class="tab-btn" data-tab="extras">🥖 Extras</button>
+      </div>
+
+      <!-- PIZZA -->
+      <div class="menu-grid tab-content active" id="tab-pizza">
+        <div class="menu-card reveal">
+          <div class="menu-card__badge">⭐ Signature</div>
+          <h3 class="menu-card__name">Pappas Special</h3>
+          <p class="menu-card__desc">Our legendary house pizza — loaded with premium toppings on a crisp wood-fired base. The one everyone comes back for.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Wood Fired</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-1">
+          <h3 class="menu-card__name">El Greco</h3>
+          <p class="menu-card__desc">Mediterranean-inspired with olives, garlic, and fresh toppings. A taste of the Greek isles on an Italian base.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Vegetarian</span>
+            <span class="menu-card__tag">Popular</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-2">
+          <h3 class="menu-card__name">Tentino</h3>
+          <p class="menu-card__desc">Classic flavours with the option to add extra chicken — generous portions on a perfectly fired crust.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Chicken Available</span>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <h3 class="menu-card__name">Margherita</h3>
+          <p class="menu-card__desc">The purist's choice. Crushed San Marzano tomatoes, mozzarella, and fresh basil. Perfection in simplicity.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Vegetarian</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-1">
+          <h3 class="menu-card__name">Quattro Stagioni</h3>
+          <p class="menu-card__desc">Four seasons, four toppings — artichokes, ham, mushrooms, and olives, each in their own quarter.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Classic Italian</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-2">
+          <h3 class="menu-card__name">Salami & Rocket</h3>
+          <p class="menu-card__desc">Spicy salami with peppery rocket, finished post-bake for freshness. A bold, satisfying combination.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Spicy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASTA -->
+      <div class="menu-grid tab-content" id="tab-pasta">
+        <div class="menu-card reveal">
+          <div class="menu-card__badge">⭐ Fan Favourite</div>
+          <h3 class="menu-card__name">Chicken Polastra</h3>
+          <p class="menu-card__desc">A beloved Pappa's classic — tender chicken in a rich, flavourful sauce over perfectly cooked pasta.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Hearty</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-1">
+          <h3 class="menu-card__name">Carbonara</h3>
+          <p class="menu-card__desc">Authentic Roman-style carbonara — pancetta, egg, Pecorino Romano, and cracked black pepper. No cream, no shortcuts.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Traditional</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-2">
+          <h3 class="menu-card__name">Arrabbiata</h3>
+          <p class="menu-card__desc">Penne in a fiery tomato and garlic sauce. Simple, bold, and unapologetically Italian.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Vegetarian</span>
+            <span class="menu-card__tag">Spicy</span>
+          </div>
+        </div>
+        <div class="menu-card reveal">
+          <h3 class="menu-card__name">Lasagne al Forno</h3>
+          <p class="menu-card__desc">Layers of rich meat ragù, béchamel, and pasta, oven-baked until golden and bubbling.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Oven Baked</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAINS -->
+      <div class="menu-grid tab-content" id="tab-mains">
+        <div class="menu-card reveal">
+          <div class="menu-card__badge">⭐ Must Try</div>
+          <h3 class="menu-card__name">Chicken Shawarma</h3>
+          <p class="menu-card__desc">Marinated chicken carved fresh, wrapped with crisp salad and garlic sauce. The quick lunch Nelspruit loves.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Lunch Favourite</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-1">
+          <h3 class="menu-card__name">Beef Shawarma & Fries</h3>
+          <p class="menu-card__desc">Slow-marinated beef shawarma served with golden fries. Hearty, satisfying, and full of flavour.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Popular</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-2">
+          <h3 class="menu-card__name">Pappas Salad</h3>
+          <p class="menu-card__desc">Our signature salad — fresh greens, vegetables, and house dressing. Light, bright, and satisfying.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Vegetarian</span>
+            <span class="menu-card__tag">Fresh</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXTRAS -->
+      <div class="menu-grid tab-content" id="tab-extras">
+        <div class="menu-card reveal">
+          <div class="menu-card__badge">⭐ Best in Town</div>
+          <h3 class="menu-card__name">Focaccia</h3>
+          <p class="menu-card__desc">House-baked focaccia — golden, dimpled, and drizzled with olive oil and herbs. The best focaccia in Nelspruit.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Freshly Baked</span>
+            <span class="menu-card__tag">Vegetarian</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-1">
+          <h3 class="menu-card__name">Garlic Bread</h3>
+          <p class="menu-card__desc">Wood-fired garlic bread with butter and fresh herbs. The perfect starter or side to any meal.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Starter</span>
+          </div>
+        </div>
+        <div class="menu-card reveal delay-2">
+          <h3 class="menu-card__name">Side Salad</h3>
+          <p class="menu-card__desc">Crisp seasonal greens with house vinaigrette. A fresh accompaniment to any pizza or pasta.</p>
+          <div class="menu-card__footer">
+            <span class="menu-card__tag">Vegetarian</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="menu-note reveal">Menu items may vary. Prices range from approximately <strong>R150–R200 per person</strong>. Ask your server about daily specials and allergen information.</p>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="section__header reveal">
+        <p class="section__label">Why Pappa's</p>
+        <h2 class="section__title">More than a meal —<br/><em>an experience</em></h2>
+      </div>
+      <div class="experience__grid">
+        <div class="exp-card reveal">
+          <div class="exp-card__icon">🔥</div>
+          <h3>Wood-Fired Tradition</h3>
+          <p>Our authentic wood-fired oven has been roaring since 1989 — giving every pizza that irreplaceable smoky char and blistered crust.</p>
+        </div>
+        <div class="exp-card reveal delay-1">
+          <div class="exp-card__icon">🌿</div>
+          <h3>Something for Everyone</h3>
+          <p>From meat lovers to vegetarians, our wide menu means no one leaves hungry. Plenty of plant-based and customisable options available.</p>
+        </div>
+        <div class="exp-card reveal delay-2">
+          <div class="exp-card__icon">🎵</div>
+          <h3>Live Music Sundays</h3>
+          <p>Unwind with live music every Sunday evening. Great food, great wine, great company — the perfect way to close the weekend.</p>
+        </div>
+        <div class="exp-card reveal delay-3">
+          <div class="exp-card__icon">🛵</div>
+          <h3>Order & Delivery</h3>
+          <p>Can't make it in? Order via our site, R50 Delivery Fee no hidden costs. Fresh from our oven to your table.</p>
+        </div>
+        <div class="exp-card reveal">
+          <div class="exp-card__icon">🅿️</div>
+          <h3>Easy Access</h3>
+          <p>Free parking available nearby. Wheelchair accessible. Conveniently located on Brown Street in Nelspruit's CBD.</p>
+        </div>
+        <div class="exp-card reveal delay-1">
+          <div class="exp-card__icon">⭐</div>
+          <h3>Loved by Locals</h3>
+          <p>With a 4.2 Google rating and over 2,000 reviews, Pappa's Kitchen is Nelspruit's most beloved Italian dining institution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE BANNER -->
+  <div class="quote-banner">
+    <div class="container">
+      <blockquote class="quote-banner__text reveal">
+        "Some good things never change — this pizzeria in Nelspruit must be the best for producing great pizza. Their wood oven pizza is unbeatable."
+      </blockquote>
+      <cite class="quote-banner__cite reveal delay-1">— TripAdvisor Guest Review</cite>
+    </div>
+  </div>
+
+  <!-- HOURS & LOCATION -->
+  <section class="hours section" id="hours">
+    <div class="container hours__inner">
+      <div class="hours__info reveal-left">
+        <p class="section__label">Visit Us</p>
+        <h2 class="section__title">We're open<br/><em>every day</em></h2>
+        <div class="hours__table">
+          <div class="hours__row">
+            <span class="hours__day">Monday – Friday</span>
+            <span class="hours__time">09:30 – 22:00</span>
+          </div>
+          <div class="hours__row">
+            <span class="hours__day">Saturday</span>
+            <span class="hours__time">09:30 – 22:00</span>
+          </div>
+          <div class="hours__row highlight">
+            <span class="hours__day">Sunday 🎵</span>
+            <span class="hours__time">09:30 – 22:00</span>
+          </div>
+        </div>
+        <p class="hours__note">Live music every Sunday evening. Kitchen closes at 21:30.</p>
+        <div class="hours__contact">
+          <a href="tel:+27137551660" class="contact-item">
+            <span class="contact-item__icon">📞</span>
+            <span>+27 13 755 1660</span>
+          </a>
+          <a href="https://www.facebook.com/PappasKitchenNelspruit/" target="_blank" rel="noopener" class="contact-item">
+            <span class="contact-item__icon">📘</span>
+            <span>Facebook Page</span>
+          </a>
+          <div class="contact-item">
+            <span class="contact-item__icon">📍</span>
+            <span>56 Brown St, Sonheuwel Central, Nelspruit, 1200</span>
+          </div>
+        </div>
+      </div>
+      <div class="hours__map-block reveal-right">
+        <div class="map-frame">
+          <iframe
+            title="Pappa's Kitchen Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.2!2d30.9744!3d-25.4739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ee8d6a1dbe9b1a3%3A0xabc123!2s56+Brown+St%2C+Nelspruit%2C+1200!5e0!3m2!1sen!2sza!4v1680000000000!5m2!1sen!2sza"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="map-address-card">
+          <strong>56 Brown Street</strong>
+          <span>Sonheuwel Central, Nelspruit</span>
+          <span>Mpumalanga, 1200</span>
+          <a href="https://maps.google.com/?q=56+Brown+Street+Nelspruit" target="_blank" class="btn btn--primary btn--sm">Get Directions →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION / CONTACT -->
+  <section class="contact section" id="contact">
+    <div class="container contact__inner">
+      <div class="section__header reveal">
+        <p class="section__label">Get in Touch</p>
+        <h2 class="section__title">Make a Reservation</h2>
+        <p class="section__sub">Call us directly or send a message. We'd love to hear from you.</p>
+      </div>
+      <form class="contact-form reveal" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+27 …" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" />
+          </div>
+        </div>
+        <div class="form-row form-row--full">
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests" name="guests">
+              <option value="">Select…</option>
+              <option value="1-2">1 – 2</option>
+              <option value="3-4">3 – 4</option>
+              <option value="5-8">5 – 8</option>
+              <option value="9+">9 or more</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row form-row--full">
+          <div class="form-group">
+            <label for="message">Message (optional)</label>
+            <textarea id="message" name="message" rows="4" placeholder="Any special requests or dietary requirements…"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Send Reservation Request</button>
+        <div class="form-success" id="form-success">
+          🎉 Thank you! We'll confirm your reservation shortly.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <span class="footer__logo">🍕 Pappa's Kitchen</span>
+        <p>Wood-fired pizza & pasta<br/>in Nelspruit since 1989.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/PappasKitchenNelspruit/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/pappas_kitchen_/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer__links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#hours">Hours</a></li>
+          <li><a href="#contact">Reservations</a></li>
+        </ul>
+      </div>
+      <div class="footer__links">
+        <h4>Order Online</h4>
+        <ul>
+          <li><a href="https://www.ubereats.com" target="_blank" rel="noopener">Uber Eats</a></li>
+          <li><a href="https://www.mrd.com/delivery/restaurant/pappas-kitchen-brown-street-cbd/1115" target="_blank" rel="noopener">Mr D Food</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <p>56 Brown Street<br/>Sonheuwel Central<br/>Nelspruit, 1200</p>
+        <a href="tel:+27137551660">+27 13 755 1660</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 CoreStack Technologies · All Rights Reserved · Nelspruit, Mpumalanga</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

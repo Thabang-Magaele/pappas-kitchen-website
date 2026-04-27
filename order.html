@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online | Pappa's Kitchen · Nelspruit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="order.css" />
+</head>
+<body class="order-page">
+
+  <!-- NAV -->
+  <nav class="nav scrolled" id="nav">
+    <a class="nav__logo" href="index.html">
+      <span class="nav__logo-icon">🍕</span>
+      <span class="nav__logo-text">Pappa's Kitchen</span>
+    </a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html#menu">Menu</a></li>
+      <li><a href="index.html#about">Our Story</a></li>
+      <li><a href="index.html#hours">Visit Us</a></li>
+      <li><a href="index.html#contact">Reservations</a></li>
+    </ul>
+    <button class="nav__burger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="order-header">
+    <div class="order-header__bg"></div>
+    <div class="container order-header__inner">
+      <p class="order-header__label">Delivery &amp; Takeaway</p>
+      <h1 class="order-header__title">Order Online</h1>
+      <p class="order-header__sub">Fresh from our wood-fired oven to your door. <strong>Flat R50 delivery fee.</strong> No hidden costs.</p>
+    </div>
+  </div>
+
+  <!-- STEP INDICATOR -->
+  <div class="steps-bar" id="steps-bar">
+    <div class="container steps-bar__inner">
+      <div class="step active" data-step="1">
+        <span class="step__num">1</span>
+        <span class="step__label">Build your order</span>
+      </div>
+      <div class="step__connector"></div>
+      <div class="step" data-step="2">
+        <span class="step__num">2</span>
+        <span class="step__label">Review cart</span>
+      </div>
+      <div class="step__connector"></div>
+      <div class="step" data-step="3">
+        <span class="step__num">3</span>
+        <span class="step__label">Checkout</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="order-main container" id="order-main">
+
+    <!-- ===== STEP 1 — MENU ===== -->
+    <section class="order-step" id="step-1">
+
+      <div class="menu-browser">
+
+        <!-- CATEGORY NAV -->
+        <aside class="cat-nav" id="cat-nav">
+          <p class="cat-nav__title">Categories</p>
+          <ul>
+            <li><a href="#cat-pizza"   class="cat-nav__link active">🍕 Pizza</a></li>
+            <li><a href="#cat-pasta"   class="cat-nav__link">🍝 Pasta</a></li>
+            <li><a href="#cat-mains"   class="cat-nav__link">🥗 Mains &amp; Salads</a></li>
+            <li><a href="#cat-extras"  class="cat-nav__link">🥖 Extras &amp; Sides</a></li>
+           <!-- <li><a href="#cat-drinks"  class="cat-nav__link">🥤 Drinks</a></li>-->
+          </ul>
+          <div class="cat-nav__note">
+            <span></span>
+            <span>All pizzas baked in our wood-fired oven to order.</span>
+          </div>
+        </aside>
+
+        <!-- MENU ITEMS -->
+        <div class="menu-items" id="menu-items">
+
+          <!-- PIZZA -->
+          <div class="menu-cat" id="cat-pizza">
+            <h2 class="menu-cat__title">🍕 Pizza</h2>
+            <p class="menu-cat__sub">Wood-fired, crisp base, generous toppings</p>
+            <div class="item-grid" id="items-pizza"></div>
+          </div>
+
+          <!-- PASTA -->
+          <div class="menu-cat" id="cat-pasta">
+            <h2 class="menu-cat__title">🍝 Pasta</h2>
+            <p class="menu-cat__sub">Handmade daily, classic Italian sauces</p>
+            <div class="item-grid" id="items-pasta"></div>
+          </div>
+
+          <!-- MAINS -->
+          <div class="menu-cat" id="cat-mains">
+            <h2 class="menu-cat__title">🥗 Mains &amp; Salads</h2>
+            <p class="menu-cat__sub">Fresh, filling, and full of flavour</p>
+            <div class="item-grid" id="items-mains"></div>
+          </div>
+
+          <!-- EXTRAS -->
+          <div class="menu-cat" id="cat-extras">
+            <h2 class="menu-cat__title">🥖 Extras &amp; Sides</h2>
+            <p class="menu-cat__sub">The perfect accompaniments</p>
+            <div class="item-grid" id="items-extras"></div>
+          </div>
+
+          <!-- DRINKS 
+          <div class="menu-cat" id="cat-drinks">
+            <h2 class="menu-cat__title">🥤 Drinks</h2>
+            <p class="menu-cat__sub">Cold beverages to complete your meal</p>
+            <div class="item-grid" id="items-drinks"></div>
+          </div>
+-->
+        </div><!-- /menu-items -->
+
+      </div><!-- /menu-browser -->
+
+    </section><!-- /step-1 -->
+
+
+    <!-- ===== STEP 2 — CART REVIEW ===== -->
+    <section class="order-step hidden" id="step-2">
+      <div class="cart-review">
+        <h2 class="cart-review__title">Your Order</h2>
+        <div class="cart-review__items" id="cart-review-items"></div>
+        <div class="cart-review__summary" id="cart-review-summary"></div>
+        <div class="cart-review__actions">
+          <button class="btn btn--ghost-dark" id="back-to-menu">← Edit Order</button>
+          <button class="btn btn--primary" id="go-to-checkout">Proceed to Checkout →</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== STEP 3 — CHECKOUT ===== -->
+    <section class="order-step hidden" id="step-3">
+      <div class="checkout-layout">
+
+        <form class="checkout-form" id="checkout-form" novalidate>
+          <h2 class="checkout-section-title">Delivery Details</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="co-name">Full Name *</label>
+              <input type="text" id="co-name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="co-phone">Phone Number *</label>
+              <input type="tel" id="co-phone" name="phone" placeholder="+27 …" required />
+            </div>
+          </div>
+
+          <div class="form-row form-row--full">
+            <div class="form-group">
+              <label for="co-address">Delivery Address *</label>
+              <input type="text" id="co-address" name="address" placeholder="Street address, suburb, Nelspruit" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="co-email">Email (for confirmation)</label>
+              <input type="email" id="co-email" name="email" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="co-time">Preferred Delivery Time</label>
+              <select id="co-time" name="time">
+                <option value="asap">As soon as possible</option>
+                <option value="30">In ~30 minutes</option>
+                <option value="45">In ~45 minutes</option>
+                <option value="60">In ~60 minutes</option>
+                <option value="later">I'll specify in notes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row form-row--full">
+            <div class="form-group">
+              <label for="co-notes">Special Instructions</label>
+              <textarea id="co-notes" name="notes" rows="3" placeholder="Allergies, gate codes, or special requests…"></textarea>
+            </div>
+          </div>
+
+          <h2 class="checkout-section-title" style="margin-top:32px">Payment Method</h2>
+          <div class="payment-options">
+            <label class="pay-opt">
+              <input type="radio" name="payment" value="cash" checked />
+              <span class="pay-opt__box">
+                <span class="pay-opt__icon">💵</span>
+                <span class="pay-opt__label">Cash on Delivery</span>
+              </span>
+            </label>
+            <label class="pay-opt">
+              <input type="radio" name="payment" value="eft" />
+              <span class="pay-opt__box">
+                <span class="pay-opt__icon">🏦</span>
+                <span class="pay-opt__label">EFT / Bank Transfer</span>
+              </span>
+            </label>
+            <label class="pay-opt">
+              <input type="radio" name="payment" value="card" />
+              <span class="pay-opt__box">
+                <span class="pay-opt__icon">💳</span>
+                <span class="pay-opt__label">Card on Delivery</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="checkout-actions">
+            <button type="button" class="btn btn--ghost-dark" id="back-to-cart">← Back to Cart</button>
+            <button type="submit" class="btn btn--primary" id="place-order-btn">Place Order →</button>
+          </div>
+        </form>
+
+        <!-- Order Summary Sidebar -->
+        <aside class="checkout-summary" id="checkout-summary"></aside>
+
+      </div>
+    </section>
+
+
+    <!-- ===== CONFIRMATION ===== -->
+    <section class="order-step hidden" id="step-confirm">
+      <div class="confirm-screen">
+        <div class="confirm-screen__icon">🎉</div>
+        <h2 class="confirm-screen__title">Order Received!</h2>
+        <p class="confirm-screen__body" id="confirm-body">
+          Thank you! Your order has been placed. We'll call you to confirm delivery details shortly.
+        </p>
+        <div class="confirm-screen__ref" id="confirm-ref"></div>
+        <div class="confirm-screen__actions">
+          <a href="index.html" class="btn btn--ghost-dark">← Back to Home</a>
+          <button class="btn btn--primary" id="new-order-btn">Place Another Order</button>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /order-main -->
+
+  <!-- FLOATING CART BUTTON -->
+  <button class="cart-fab hidden" id="cart-fab" aria-label="View cart">
+    <span class="cart-fab__icon">🛒</span>
+    <span class="cart-fab__label">View Cart</span>
+    <span class="cart-fab__badge" id="cart-fab-badge">0</span>
+    <span class="cart-fab__total" id="cart-fab-total">R0</span>
+  </button>
+
+  <!-- ITEM CUSTOMISE MODAL -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal" id="item-modal" role="dialog" aria-modal="true">
+      <button class="modal__close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal__emoji" id="modal-emoji"></div>
+      <h3 class="modal__title" id="modal-title"></h3>
+      <p class="modal__desc" id="modal-desc"></p>
+      <p class="modal__price" id="modal-price"></p>
+
+      <div class="modal__note-wrap">
+        <label for="modal-note">Special request <span>(optional)</span></label>
+        <textarea id="modal-note" rows="2" placeholder="e.g. extra cheese, no olives…"></textarea>
+      </div>
+
+      <div class="modal__qty">
+        <button class="qty-btn" id="modal-qty-minus">−</button>
+        <span class="qty-val" id="modal-qty-val">1</span>
+        <button class="qty-btn" id="modal-qty-plus">+</button>
+      </div>
+
+      <button class="btn btn--primary btn--full" id="modal-add-btn">Add to Order — <span id="modal-add-total">R0</span></button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <span class="footer__logo">🍕 Pappa's Kitchen</span>
+        <p>Wood-fired pizza &amp; pasta<br/>in Nelspruit since 1989.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html#about">Our Story</a></li>
+          <li><a href="index.html#menu">Menu</a></li>
+          <li><a href="index.html#hours">Hours</a></li>
+          <li><a href="index.html#contact">Reservations</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Contact</h4>
+        <p>56 Brown Street<br/>Sonheuwel Central<br/>Nelspruit, 1200</p>
+        <a href="tel:+27137551660">+27 13 755 1660</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2025 CoreStack Technologies · All Rights Reserved · Nelspruit, Mpumalanga</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="order.js"></script>
+</body>
+</html>
