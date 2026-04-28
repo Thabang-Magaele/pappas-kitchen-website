@@ -499,36 +499,53 @@ $('#checkout-form').addEventListener('submit', (e) => {
   });
   if (!valid) return;
 
-  // Simulate placing the order
+  // --- Build the WhatsApp URL SYNCHRONOUSLY here, while still inside the
+  //     user-gesture (submit event). Mobile browsers block window.open() and
+  //     programmatic navigations that happen inside setTimeout/async callbacks
+  //     because they are no longer traceable to a direct user action. ---
+  const refNum   = 'PK-' + Date.now().toString(36).toUpperCase();
+  const payment  = $('input[name="payment"]:checked')?.value || 'cash';
+  const payLabel = { cash: 'Cash on Delivery', eft: 'EFT / Bank Transfer', card: 'Card on Delivery' }[payment];
+
+  const cartItems = state.cart
+    .map(e => `• ${e.item.name} x${e.qty} (${fmt(e.item.price * e.qty)})${e.note ? ` — Note: ${e.note}` : ''}`)
+    .join('\n');
+
+  const whatsappMessage =
+    `*New Order — Pappa's Kitchen*\n\n` +
+    `Ref: ${refNum}\n` +
+    `Name: ${name}\n` +
+    `Phone: ${phone}\n` +
+    `Address: ${address}\n` +
+    `Payment: ${payLabel}\n\n` +
+    `*Order:*\n${cartItems}\n\n` +
+    `Delivery fee: R50\n` +
+    `*Total: ${fmt(getTotal())}*`;
+
+  const whatsappUrl = `https://wa.me/27721868282?text=${encodeURIComponent(whatsappMessage)}`;
+
+  // Use a hidden <a> element and .click() it synchronously — this is the most
+  // reliable cross-browser technique for deep-links on mobile. Unlike
+  // window.open(), an <a> click is always treated as a user-initiated navigation
+  // and is never intercepted by popup blockers.
+  const wa = document.createElement('a');
+  wa.href     = whatsappUrl;
+  wa.target   = '_blank';
+  wa.rel      = 'noopener noreferrer';
+  wa.style.display = 'none';
+  document.body.appendChild(wa);
+  wa.click();
+  // Clean up the element after the browser has processed the click
+  setTimeout(() => wa.remove(), 500);
+
+  // Disable the submit button and show the loading state
   const btn = $('#place-order-btn');
   btn.textContent = 'Placing order…';
   btn.disabled = true;
   btn.style.opacity = '0.7';
 
+  // UI transition — safe to defer; no navigation happens here
   setTimeout(() => {
-    const refNum = 'PK-' + Date.now().toString(36).toUpperCase();
-    const payment = $('input[name="payment"]:checked')?.value || 'cash';
-    const payLabel = { cash: 'Cash on Delivery', eft: 'EFT / Bank Transfer', card: 'Card on Delivery' }[payment];
-
-    // 1. Build the WhatsApp Message
-    const cartItems = state.cart.map(e => `• ${e.item.name} x ${e.qty} (${fmt(e.item.price * e.qty)}) ${e.note ? `(Note: ${e.note})` : ''}`).join('\n');
-    const total = getTotal();
-    
-    const whatsappMessage = `***New Order - Pappa's Kitchen***\n\n` +
-      `Ref: ${refNum}\n` +
-      `Name: ${name}\n` +
-      `Phone: ${phone}\n` +
-      `Address: ${address}\n` +
-      `Payment: ${payLabel}\n` +
-      `Delivery Fee: R50\n\n` +
-      `Order Details:\n${cartItems}\n\n` +
-      `Total: ${fmt(total)}`;
-
-    // 2. Open WhatsApp in a new tab
-    const whatsappUrl = `https://wa.me/27721868282?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
-
-    // 3. Show local confirmation screen
     $$('.order-step').forEach(s => s.classList.add('hidden'));
     $('#step-confirm').classList.remove('hidden');
     $('#cart-fab').classList.add('hidden');
@@ -536,7 +553,7 @@ $('#checkout-form').addEventListener('submit', (e) => {
     $$('.step').forEach(s => { s.classList.remove('active'); s.classList.add('done'); });
 
     $('#confirm-body').innerHTML = `
-      Thank you, <strong>${name}</strong>! Your order details have been opened in WhatsApp. Please send the message to confirm your order with us.<br/><br/>
+      Thank you, <strong>${name}</strong>! Your order details have been sent to WhatsApp — please tap <em>Send</em> in the app to confirm your order with us.<br/><br/>
       Payment: <strong>${payLabel}</strong>. Delivery to: <em>${address}</em>.
     `;
     $('#confirm-ref').textContent = `Order Reference: ${refNum}`;
