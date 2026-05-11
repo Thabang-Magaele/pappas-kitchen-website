@@ -13,10 +13,9 @@
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <div class="nav__logo">
-      <span class="nav__logo-icon">🍕</span>
-      <span class="nav__logo-text">Pappa's Kitchen</span>
-    </div>
+    <a class="nav__logo" href="index.html">
+      <img src="images/logo.png" alt="Pappa's Kitchen" class="nav__logo-img" />
+    </a>
     <button class="nav__burger" id="burger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -115,6 +114,17 @@
             <span class="stat__label">Happy reviews</span>
           </div>
         </div>
+
+        <div class="about__order-cta reveal">
+          <a href="order.html" class="btn btn--primary about__order-btn">
+            <span>🛵</span> Order Online Now
+          </a>
+          <div class="about__order-meta">
+            <span class="about__order-meta-pill">🔥 Wood-fired fresh</span>
+            <span class="about__order-meta-pill">📍 Flat R50 delivery</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -274,6 +284,26 @@
       </div>
 
       <p class="menu-note reveal">Menu items may vary. Prices range from approximately <strong>R150–R200 per person</strong>. Ask your server about daily specials and allergen information.</p>
+
+      <!-- ORDER BANNER -->
+      <div class="menu-order-banner reveal">
+        <div class="menu-order-banner__glow"></div>
+        <div class="menu-order-banner__content">
+          <div class="menu-order-banner__text">
+            <p class="menu-order-banner__eyebrow">🛵 &nbsp;Delivered to your door</p>
+            <h3 class="menu-order-banner__title">Craving something?<br/><em>Order in minutes.</em></h3>
+            <p class="menu-order-banner__sub">Fresh from our wood-fired oven straight to your door. <strong>Flat R50 delivery</strong> — no surprises at checkout.</p>
+          </div>
+          <div class="menu-order-banner__action">
+            <a href="order.html" class="menu-order-banner__btn">
+              Order Now
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <p class="menu-order-banner__reassurance">No account needed &nbsp;·&nbsp; Pay on delivery</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -443,7 +473,7 @@
   <footer class="footer">
     <div class="footer__inner container">
       <div class="footer__brand">
-        <span class="footer__logo">🍕 Pappa's Kitchen</span>
+        <img src="images/logo.png" alt="Pappa's Kitchen" class="footer__logo-img" />
         <p>Wood-fired pizza & pasta<br/>in Nelspruit since 1989.</p>
         <div class="footer__social">
           <a href="https://www.facebook.com/PappasKitchenNelspruit/" target="_blank" rel="noopener" aria-label="Facebook">

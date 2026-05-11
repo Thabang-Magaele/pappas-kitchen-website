@@ -1,172 +1,323 @@
 /* ========================================
    PAPPA'S KITCHEN — order.js
-   Full ordering system logic
+   Full ordering system — real menu data
    ======================================== */
 
 'use strict';
 
 /* ----------------------------------------
    MENU DATA
+   sizes: { S, M, L } for sized items
+   price: number for flat-price items
 ---------------------------------------- */
 const MENU = [
-  /* ---- PIZZA ---- */
+
+  /* ===== PIZZAS (MEAT) ===== */
   {
-    id: 'piz-1', cat: 'pizza', emoji: '',
-    name: "Pappas Special",
-    desc: "Our legendary house pizza — loaded with premium toppings on a crisp wood-fired base. The dish everyone comes back for.",
-    price: 185, badge: '⭐ Signature',
-    tags: ['Wood Fired', 'Popular']
+    id: 'piz-regina', cat: 'pizza', emoji: '🍕',
+    name: 'Regina',
+    desc: 'Alfredo ham with fresh mushrooms.',
+    sizes: { S: 68, M: 89, L: 120 },
+    tags: ['Ham', 'Mushrooms']
   },
   {
-    id: 'piz-2', cat: 'pizza', emoji: '',
-    name: "El Greco",
-    desc: "Mediterranean-inspired with olives, garlic, feta, and fresh toppings on our classic wood-fired base.",
-    price: 165,
-    tags: ['Vegetarian', 'Popular']
+    id: 'piz-hawaiian', cat: 'pizza', emoji: '🍕',
+    name: 'Hawaiian',
+    desc: 'Alfredo ham with slices of pineapple.',
+    sizes: { S: 68, M: 89, L: 120 },
+    tags: ['Ham', 'Pineapple']
   },
   {
-    id: 'piz-3', cat: 'pizza', emoji: '',
-    name: "Tentino",
-    desc: "Classic flavours with the option to add extra chicken — generous portions on a perfectly fired crust.",
-    price: 170,
-    tags: ['Chicken Available']
+    id: 'piz-quattro', cat: 'pizza', emoji: '🍕',
+    name: 'Quattro Stagioni',
+    desc: 'Alfredo ham with fresh mushrooms, asparagus and olives.',
+    sizes: { S: 89, M: 120, L: 165 },
+    tags: ['Ham', 'Mushrooms', 'Olives']
   },
   {
-    id: 'piz-4', cat: 'pizza', emoji: '',
-    name: "Margherita",
-    desc: "Crushed San Marzano tomatoes, mozzarella, and fresh basil. Perfection in simplicity — a true Italian classic.",
-    price: 145,
+    id: 'piz-trentino', cat: 'pizza', emoji: '🍕',
+    name: 'Trentino',
+    desc: 'Crispy bacon with avocado and fresh mushrooms.',
+    sizes: { S: 99, M: 147, L: 195 },
+    tags: ['Bacon', 'Avocado']
+  },
+  {
+    id: 'piz-caribbean', cat: 'pizza', emoji: '🍕',
+    name: 'Caribbean',
+    desc: 'Crispy bacon with pineapple and banana slices.',
+    sizes: { S: 77, M: 106, L: 154 },
+    tags: ['Bacon', 'Pineapple']
+  },
+  {
+    id: 'piz-pepperoni', cat: 'pizza', emoji: '🍕',
+    name: 'Pepperoni',
+    desc: 'Italian style pepperoni with green peppers and fresh tomatoes.',
+    sizes: { S: 72, M: 104, L: 139 },
+    tags: ['Pepperoni', 'Spicy']
+  },
+  {
+    id: 'piz-milano', cat: 'pizza', emoji: '🍕',
+    name: 'Milano',
+    desc: 'Traditional salami, green peppers, onions and fresh mushrooms.',
+    sizes: { S: 78, M: 109, L: 154 },
+    tags: ['Salami']
+  },
+  {
+    id: 'piz-elgreco', cat: 'pizza', emoji: '🍕',
+    name: 'El Greco',
+    desc: 'Traditional salami with olives and fresh garlic.',
+    sizes: { S: 68, M: 89, L: 120 },
+    tags: ['Salami', 'Olives']
+  },
+  {
+    id: 'piz-sardinia', cat: 'pizza', emoji: '🍕',
+    name: 'Sardinia',
+    desc: 'Roasted pork rib with pineapple and fresh tomato.',
+    sizes: { S: 72, M: 104, L: 139 },
+    tags: ['Pork Rib', 'Pineapple']
+  },
+  {
+    id: 'piz-roma', cat: 'pizza', emoji: '🍕',
+    name: 'Roma',
+    desc: 'A combination of traditional salami, selected ham and crispy bacon.',
+    sizes: { S: 78, M: 109, L: 154 },
+    tags: ['Salami', 'Ham', 'Bacon']
+  },
+  {
+    id: 'piz-special', cat: 'pizza', emoji: '🍕',
+    name: 'Pappas Special',
+    desc: 'Traditional salami, ham, bacon, pepperoni, onions and green peppers.',
+    sizes: { S: 89, M: 120, L: 165 },
+    badge: '⭐ Signature',
+    tags: ['Salami', 'Ham', 'Bacon', 'Popular']
+  },
+  {
+    id: 'piz-carne', cat: 'pizza', emoji: '🍕',
+    name: 'Carne',
+    desc: 'Finest South African beef biltong.',
+    sizes: { S: 70, M: 99, L: 130 },
+    tags: ['Biltong', 'SA Special']
+  },
+  {
+    id: 'piz-toscano', cat: 'pizza', emoji: '🍕',
+    name: 'Toscano',
+    desc: 'Stir-fried beef strips, pepperdillos, onions and our "Special" sauce.',
+    sizes: { S: 78, M: 109, L: 154 },
+    tags: ['Beef', 'Spicy']
+  },
+  {
+    id: 'piz-sorrento', cat: 'pizza', emoji: '🍕',
+    name: 'Sorrento',
+    desc: 'Spicy ground beef, onions, fresh tomato and feta cheese.',
+    sizes: { S: 89, M: 120, L: 165 },
+    tags: ['Beef', 'Spicy', 'Feta']
+  },
+  {
+    id: 'piz-mexicano', cat: 'pizza', emoji: '🍕',
+    name: 'Mexicano',
+    desc: 'Spicy ground beef, fresh chillis, green peppers and onions.',
+    sizes: { S: 78, M: 109, L: 154 },
+    tags: ['Beef', 'Spicy', 'Chilli']
+  },
+  {
+    id: 'piz-napolitano', cat: 'pizza', emoji: '🍕',
+    name: 'Napolitano',
+    desc: 'Anchovies with capers and olives.',
+    sizes: { S: 80, M: 113, L: 158 },
+    tags: ['Seafood', 'Anchovies']
+  },
+  {
+    id: 'piz-neptune', cat: 'pizza', emoji: '🍕',
+    name: 'Neptune',
+    desc: 'Tuna, mussels and shrimps topped with our "Special" sauce.',
+    sizes: { S: 91, M: 125, L: 169 },
+    tags: ['Seafood', 'Tuna']
+  },
+
+  /* ===== VEGETARIAN PIZZA ===== */
+  {
+    id: 'veg-margherita', cat: 'vegpizza', emoji: '🍅',
+    name: 'Margherita',
+    desc: 'Tomato base with mozzarella cheese.',
+    sizes: { S: 48, M: 62, L: 79 },
     tags: ['Vegetarian', 'Classic']
   },
   {
-    id: 'piz-5', cat: 'pizza', emoji: '',
-    name: "Quattro Stagioni",
-    desc: "Four seasons, four toppings — artichokes, ham, mushrooms, and olives, each in their own quarter.",
-    price: 175,
-    tags: ['Classic Italian']
+    id: 'veg-salerno', cat: 'vegpizza', emoji: '🧀',
+    name: 'Salerno',
+    desc: 'A combination of mozzarella, cheddar and feta cheese.',
+    sizes: { S: 70, M: 99, L: 130 },
+    tags: ['Vegetarian', 'Three Cheese']
   },
   {
-    id: 'piz-6', cat: 'pizza', emoji: '',
-    name: "Salami & Rocket",
-    desc: "Spicy salami with peppery rocket, finished post-bake for freshness. Bold, satisfying, and unmistakably Italian.",
-    price: 175,
-    tags: ['Spicy', 'Popular']
-  },
-
-  /* ---- PASTA ---- */
-  {
-    id: 'pas-1', cat: 'pasta', emoji: '',
-    name: "Chicken Polastra",
-    desc: "A beloved Pappa's classic — tender chicken in a rich, flavourful tomato-cream sauce over perfectly cooked pasta.",
-    price: 160, badge: '⭐ Fan Favourite',
-    tags: ['Hearty']
-  },
-  {
-    id: 'pas-2', cat: 'pasta', emoji: '',
-    name: "Carbonara",
-    desc: "Authentic Roman-style — pancetta, egg yolk, Pecorino Romano, and cracked black pepper. No cream, no shortcuts.",
-    price: 155,
-    tags: ['Traditional', 'Rich']
-  },
-  {
-    id: 'pas-3', cat: 'pasta', emoji: '',
-    name: "Arrabbiata",
-    desc: "Penne in a fiery tomato and garlic sauce. Simple, bold, and unapologetically Italian.",
-    price: 140,
-    tags: ['Vegetarian', 'Spicy']
-  },
-  {
-    id: 'pas-4', cat: 'pasta', emoji: '',
-    name: "Lasagne al Forno",
-    desc: "Layers of rich meat ragù, béchamel, and pasta, oven-baked until golden and bubbling.",
-    price: 165,
-    tags: ['Oven Baked', 'Hearty']
+    id: 'veg-vegetarian', cat: 'vegpizza', emoji: '🥦',
+    name: 'Vegetarian',
+    desc: 'Fresh mushrooms, pineapple, olives, onions and green peppers.',
+    sizes: { S: 80, M: 113, L: 158 },
+    tags: ['Vegetarian', 'Popular']
   },
 
-  /* ---- MAINS & SALADS ---- */
+  /* ===== CHICKEN PIZZA ===== */
   {
-    id: 'mai-1', cat: 'mains', emoji: '',
-    name: "Chicken Shawarma",
-    desc: "Marinated chicken carved fresh, wrapped with crisp salad and garlic sauce. Nelspruit's favourite quick lunch.",
-    price: 125, badge: '⭐ Must Try',
-    tags: ['Lunch Favourite']
+    id: 'chk-mozambican', cat: 'chickpizza', emoji: '🌶️',
+    name: 'Mozambican',
+    desc: 'Peri-peri chicken livers with green peppers and onions.',
+    sizes: { S: 68, M: 89, L: 120 },
+    tags: ['Chicken', 'Peri-Peri', 'Spicy']
   },
   {
-    id: 'mai-2', cat: 'mains', emoji: '',
-    name: "Beef Shawarma & Fries",
-    desc: "Slow-marinated beef shawarma served with golden fries. Hearty, satisfying, and full of flavour.",
-    price: 150,
-    tags: ['Popular']
+    id: 'chk-jamaican', cat: 'chickpizza', emoji: '🍍',
+    name: 'Jamaican',
+    desc: 'Spicy stir-fried chicken, slices of pineapple and fresh mushrooms.',
+    sizes: { S: 82, M: 115, L: 160 },
+    tags: ['Chicken', 'Pineapple', 'Spicy']
   },
   {
-    id: 'mai-3', cat: 'mains', emoji: '',
-    name: "Pappas Salad",
-    desc: "Our signature salad — fresh seasonal greens, crisp vegetables, and our house vinaigrette. Light and satisfying.",
+    id: 'chk-polastra', cat: 'chickpizza', emoji: '🍗',
+    name: 'Polastra',
+    desc: 'Chicken fillets, onions, pepperdillos topped with our "Special" sauce.',
+    sizes: { S: 72, M: 104, L: 139 },
+    badge: '⭐ Fan Favourite',
+    tags: ['Chicken', 'Popular']
+  },
+
+  /* ===== PASTA ===== */
+  {
+    id: 'pas-alfredo', cat: 'pasta', emoji: '🍝',
+    name: 'Fettuccine Alfredo',
+    desc: 'Fettucini pasta topped with ham and mushrooms in a creamy, garlic sauce.',
     price: 95,
-    tags: ['Vegetarian', 'Fresh', 'Light']
+    tags: ['Ham', 'Creamy']
+  },
+  {
+    id: 'pas-beeflasagne', cat: 'pasta', emoji: '🫕',
+    name: 'Beef Lasagne',
+    desc: 'Choice ground beef in a spicy tomato base.',
+    price: 142,
+    tags: ['Beef', 'Oven Baked']
+  },
+  {
+    id: 'pas-chicklasagne', cat: 'pasta', emoji: '🫕',
+    name: 'Chicken Lasagne',
+    desc: 'Chicken pieces with mushrooms, peppers and onions.',
+    price: 130,
+    tags: ['Chicken', 'Oven Baked']
+  },
+  {
+    id: 'pas-bolognaise', cat: 'pasta', emoji: '🍝',
+    name: 'Spaghetti Bolognaise',
+    desc: 'Spaghetti topped with traditional meat sauce.',
+    price: 97,
+    tags: ['Beef', 'Classic']
+  },
+  {
+    id: 'pas-mac', cat: 'pasta', emoji: '🧀',
+    name: 'Macaroni Cheese',
+    desc: 'Baked penne pasta with creamy sauce.',
+    price: 53,
+    tags: ['Vegetarian', 'Comfort Food']
   },
 
-  /* ---- EXTRAS ---- */
+  /* ===== SALADS ===== */
   {
-    id: 'ext-1', cat: 'extras', emoji: '',
-    name: "Focaccia",
-    desc: "House-baked focaccia — golden, dimpled, and drizzled with olive oil and herbs. The best in Nelspruit.",
-    price: 65, badge: '⭐ Best in Town',
-    tags: ['Freshly Baked', 'Vegetarian']
+    id: 'sal-french', cat: 'salads', emoji: '🥗',
+    name: 'French Salad',
+    desc: 'Crispy lettuce, tomatoes, cucumber, onions and green peppers.',
+    price: 68,
+    tags: ['Vegetarian', 'Fresh']
   },
   {
-    id: 'ext-2', cat: 'extras', emoji: '',
-    name: "Garlic Bread",
-    desc: "Wood-fired garlic bread with butter and fresh herbs. The perfect starter or side.",
-    price: 55,
-    tags: ['Starter', 'Vegetarian']
+    id: 'sal-italian', cat: 'salads', emoji: '🥗',
+    name: 'Italian Salad',
+    desc: 'Crisp salad topped with mozzarella cheese and Kalamata olives.',
+    price: 75,
+    tags: ['Vegetarian', 'Mozzarella']
   },
   {
-    id: 'ext-3', cat: 'extras', emoji: '',
-    name: "Side Salad",
-    desc: "Crisp seasonal greens with house vinaigrette. A fresh accompaniment to any pizza or pasta.",
-    price: 60,
-    tags: ['Vegetarian', 'Light']
+    id: 'sal-greek', cat: 'salads', emoji: '🥗',
+    name: 'Greek Salad',
+    desc: 'Crisp salad with feta cheese and Kalamata olives.',
+    price: 78,
+    tags: ['Vegetarian', 'Feta']
   },
   {
-    id: 'ext-4', cat: 'extras', emoji: '',
-    name: "Chips / Fries",
-    desc: "Golden, crispy fries seasoned with sea salt. A classic side for any order.",
-    price: 50,
-    tags: ['Vegetarian', 'Side']
+    id: 'sal-pappas', cat: 'salads', emoji: '🥗',
+    name: "Pappa's Salad",
+    desc: 'Crisp salad topped with spicy stir-fried chicken, slices of avocado and our secret dressing.',
+    price: 156,
+    badge: '⭐ Recommended',
+    tags: ['Chicken', 'Avocado', 'Popular']
   },
 
-  /* ---- DRINKS ---- 
+  /* ===== BURGERS & SHAWARMAS ===== */
   {
-    id: 'drk-1', cat: 'drinks', emoji: '🥤',
-    name: "Soft Drink (330ml)",
-    desc: "Coca-Cola, Sprite, Fanta Orange, or Fanta Grape. Ice cold.",
-    price: 30,
-    tags: ['Cold']
+    id: 'bur-beef', cat: 'burgers', emoji: '🍔',
+    name: 'Beef Burger',
+    desc: "Pappa's Kitchen beef pattie served with our Special Sauce on a sesame seed bun.",
+    price: 80,
+    tags: ['Beef']
   },
   {
-    id: 'drk-2', cat: 'drinks', emoji: '💧',
-    name: "Still Water (500ml)",
-    desc: "Refreshing still mineral water.",
-    price: 22,
-    tags: ['Cold']
+    id: 'bur-chicken', cat: 'burgers', emoji: '🍔',
+    name: 'Chicken Burger',
+    desc: 'Tender marinated chicken strips served with our secret sauce on a sesame seed bun.',
+    price: 77,
+    tags: ['Chicken']
   },
   {
-    id: 'drk-3', cat: 'drinks', emoji: '🍋',
-    name: "Lemonade (500ml)",
-    desc: "House-made lemonade with fresh lemon and mint. Refreshing and zesty.",
-    price: 38,
-    tags: ['Cold', 'Freshly Made']
+    id: 'sha-beef', cat: 'burgers', emoji: '🌯',
+    name: 'Beef Shawarma',
+    desc: "Tender strips of stir-fried beef in fresh oven-baked pita with coleslaw and Pappa's Schwarma Sauce.",
+    price: 65,
+    tags: ['Beef', 'Pita']
   },
   {
-    id: 'drk-4', cat: 'drinks', emoji: '🍺',
-    name: "Craft Beer (340ml)",
-    desc: "Ask your delivery driver for today's available selection.",
-    price: 55,
-    tags: ['Alcoholic', '18+']
-  }
-*/
+    id: 'sha-chicken', cat: 'burgers', emoji: '🌯',
+    name: 'Chicken Shawarma',
+    desc: "Tender strips of stir-fried filleted chicken breasts in fresh oven-baked pita with coleslaw and Pappa's Schwarma Sauce.",
+    price: 63,
+    tags: ['Chicken', 'Pita']
+  },
 
+  /* ===== ROAST CHICKEN ===== */
+  {
+    id: 'rot-full', cat: 'chicken', emoji: '🍗',
+    name: 'Roast Chicken (Full)',
+    desc: 'Flattie chicken slow roasted in our wood-burning oven, served with your choice of chips, pasta or pap and side salad.',
+    price: 249,
+    badge: '🔥 Wood-Fired',
+    tags: ['Chicken', 'Whole', 'With Sides']
+  },
+  {
+    id: 'rot-half', cat: 'chicken', emoji: '🍗',
+    name: 'Roast Chicken (Half)',
+    desc: 'Half a flattie chicken slow roasted in our wood-burning oven, served with your choice of chips, pasta or pap and side salad.',
+    price: 130,
+    tags: ['Chicken', 'Half', 'With Sides']
+  },
+
+  /* ===== FOCACCIA ===== */
+  {
+    id: 'foc-garlic', cat: 'focaccia', emoji: '🧄',
+    name: 'Garlic Focaccia',
+    desc: 'Olive oil, garlic, herbs and butter.',
+    sizes: { S: 40, M: 55, L: 73 },
+    tags: ['Vegetarian', 'Garlic']
+  },
+  {
+    id: 'foc-cheese', cat: 'focaccia', emoji: '🧀',
+    name: 'Cheese Focaccia',
+    desc: 'Olive oil, garlic, herbs and mozzarella cheese.',
+    sizes: { S: 52, M: 69, L: 99 },
+    tags: ['Vegetarian', 'Cheese']
+  },
+  {
+    id: 'foc-pesto', cat: 'focaccia', emoji: '🌿',
+    name: 'Pesto Focaccia',
+    desc: 'Basil pesto and feta cheese.',
+    sizes: { S: 55, M: 81, L: 115 },
+    tags: ['Vegetarian', 'Pesto', 'Feta']
+  },
 ];
 
 const DELIVERY_FEE = 50;
@@ -175,10 +326,11 @@ const DELIVERY_FEE = 50;
    STATE
 ---------------------------------------- */
 const state = {
-  cart: [],       // { item, qty, note }
+  cart: [],
   currentStep: 1,
   modalItem: null,
   modalQty: 1,
+  modalSize: null,
 };
 
 /* ----------------------------------------
@@ -186,17 +338,28 @@ const state = {
 ---------------------------------------- */
 const $  = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
-const fmt = (n) => `R${n.toFixed(0)}`;
+const fmt = (n) => `R${Number(n).toFixed(0)}`;
+
+/* ----------------------------------------
+   PRICE HELPER
+---------------------------------------- */
+function itemPrice(item, size) {
+  if (item.sizes) return item.sizes[size || 'M'];
+  return item.price;
+}
 
 /* ----------------------------------------
    BUILD MENU CARDS
 ---------------------------------------- */
 const catMap = {
-  pizza:  'items-pizza',
-  pasta:  'items-pasta',
-  mains:  'items-mains',
-  extras: 'items-extras',
-  drinks: 'items-drinks',
+  pizza:      'items-pizza',
+  vegpizza:   'items-vegpizza',
+  chickpizza: 'items-chickpizza',
+  pasta:      'items-pasta',
+  salads:     'items-salads',
+  burgers:    'items-burgers',
+  chicken:    'items-chicken',
+  focaccia:   'items-focaccia',
 };
 
 function buildMenu() {
@@ -204,21 +367,27 @@ function buildMenu() {
     const grid = document.getElementById(catMap[item.cat]);
     if (!grid) return;
 
+    const hasSizes    = !!item.sizes;
+    const displayPrice = hasSizes
+      ? `from ${fmt(Math.min(...Object.values(item.sizes)))}`
+      : fmt(item.price);
+
     const card = document.createElement('div');
     card.className = 'item-card';
     card.dataset.id = item.id;
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', `${item.name} - ${fmt(item.price)}`);
+    card.setAttribute('aria-label', `${item.name} — ${displayPrice}`);
 
     card.innerHTML = `
       ${item.badge ? `<div class="item-card__badge">${item.badge}</div>` : ''}
       <div class="item-card__emoji">${item.emoji}</div>
       <div class="item-card__name">${item.name}</div>
       <div class="item-card__desc">${item.desc}</div>
+      ${hasSizes ? `<div class="item-card__sizes">S · M · L</div>` : ''}
       ${item.tags?.length ? `<div class="item-card__tags">${item.tags.map(t => `<span class="item-card__tag">${t}</span>`).join('')}</div>` : ''}
       <div class="item-card__footer">
-        <span class="item-card__price">${fmt(item.price)}</span>
+        <span class="item-card__price">${displayPrice}</span>
         <span class="item-card__add">+</span>
       </div>
     `;
@@ -238,42 +407,71 @@ function buildMenu() {
 function openModal(item) {
   state.modalItem = item;
   state.modalQty  = 1;
+  state.modalSize = item.sizes ? 'M' : null;
 
-  $('#modal-emoji').textContent    = item.emoji;
-  $('#modal-title').textContent    = item.name;
-  $('#modal-desc').textContent     = item.desc;
-  $('#modal-price').textContent    = fmt(item.price);
-  $('#modal-qty-val').textContent  = '1';
-  $('#modal-note').value           = '';
-  updateModalTotal();
+  $('#modal-emoji').textContent   = item.emoji;
+  $('#modal-title').textContent   = item.name;
+  $('#modal-desc').textContent    = item.desc;
+  $('#modal-qty-val').textContent = '1';
+  $('#modal-note').value          = '';
 
+  const sizesWrap = $('#modal-sizes');
+  const sizesRow  = $('#modal-sizes-row');
+
+  if (item.sizes) {
+    sizesRow.innerHTML = '';
+    const sizeNames = { S: 'Small', M: 'Medium', L: 'Large' };
+    Object.entries(item.sizes).forEach(([key, price]) => {
+      const lbl = document.createElement('label');
+      lbl.className = 'size-opt';
+      lbl.innerHTML = `
+        <input type="radio" name="modal-size" value="${key}" ${key === 'M' ? 'checked' : ''} />
+        <span class="size-opt__box">
+          <span class="size-opt__key">${key}</span>
+          <span class="size-opt__name">${sizeNames[key]}</span>
+          <span class="size-opt__price">${fmt(price)}</span>
+        </span>`;
+      lbl.querySelector('input').addEventListener('change', () => {
+        state.modalSize = key;
+        updateModal();
+      });
+      sizesRow.appendChild(lbl);
+    });
+    sizesWrap.classList.remove('hidden');
+  } else {
+    sizesWrap.classList.add('hidden');
+  }
+
+  updateModal();
   $('#modal-overlay').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
-  $('#modal-close').focus();
+  setTimeout(() => $('#modal-close').focus(), 50);
+}
+
+function updateModal() {
+  const price = itemPrice(state.modalItem, state.modalSize);
+  $('#modal-price').textContent     = fmt(price);
+  $('#modal-add-total').textContent = fmt(price * state.modalQty);
 }
 
 function closeModal() {
   $('#modal-overlay').classList.add('hidden');
   document.body.style.overflow = '';
   state.modalItem = null;
-}
-
-function updateModalTotal() {
-  const total = state.modalItem.price * state.modalQty;
-  $('#modal-add-total').textContent = fmt(total);
+  state.modalSize = null;
 }
 
 $('#modal-qty-minus').addEventListener('click', () => {
   if (state.modalQty > 1) {
     state.modalQty--;
     $('#modal-qty-val').textContent = state.modalQty;
-    updateModalTotal();
+    updateModal();
   }
 });
 $('#modal-qty-plus').addEventListener('click', () => {
   state.modalQty++;
   $('#modal-qty-val').textContent = state.modalQty;
-  updateModalTotal();
+  updateModal();
 });
 $('#modal-close').addEventListener('click', closeModal);
 $('#modal-overlay').addEventListener('click', (e) => {
@@ -285,7 +483,7 @@ document.addEventListener('keydown', (e) => {
 
 $('#modal-add-btn').addEventListener('click', () => {
   if (!state.modalItem) return;
-  addToCart(state.modalItem, state.modalQty, $('#modal-note').value.trim());
+  addToCart(state.modalItem, state.modalQty, $('#modal-note').value.trim(), state.modalSize);
   closeModal();
   flashCartFab();
 });
@@ -293,14 +491,14 @@ $('#modal-add-btn').addEventListener('click', () => {
 /* ----------------------------------------
    CART LOGIC
 ---------------------------------------- */
-function addToCart(item, qty, note) {
+function addToCart(item, qty, note, size) {
   const existing = state.cart.find(
-    e => e.item.id === item.id && e.note === note
+    e => e.item.id === item.id && e.note === note && e.size === size
   );
   if (existing) {
     existing.qty += qty;
   } else {
-    state.cart.push({ item, qty, note });
+    state.cart.push({ item, qty, note, size });
   }
   updateCartFab();
 }
@@ -324,20 +522,16 @@ function changeCartQty(index, delta) {
 }
 
 function getSubtotal() {
-  return state.cart.reduce((sum, e) => sum + e.item.price * e.qty, 0);
+  return state.cart.reduce((sum, e) => sum + itemPrice(e.item, e.size) * e.qty, 0);
 }
-function getTotal() {
-  return state.cart.length ? getSubtotal() + DELIVERY_FEE : 0;
-}
-function getTotalItems() {
-  return state.cart.reduce((sum, e) => sum + e.qty, 0);
-}
+function getTotal()      { return state.cart.length ? getSubtotal() + DELIVERY_FEE : 0; }
+function getTotalItems() { return state.cart.reduce((sum, e) => sum + e.qty, 0); }
 
 /* ----------------------------------------
    CART FAB
 ---------------------------------------- */
 function updateCartFab() {
-  const fab = $('#cart-fab');
+  const fab   = $('#cart-fab');
   const count = getTotalItems();
   if (count > 0) {
     fab.classList.remove('hidden');
@@ -360,29 +554,21 @@ $('#cart-fab').addEventListener('click', () => goToStep(2));
    STEP NAVIGATION
 ---------------------------------------- */
 function goToStep(n) {
-  // Validate
   if (n === 2 && state.cart.length === 0) {
     shakeEl($('#cart-fab'));
     return;
   }
-
   state.currentStep = n;
-
   $$('.order-step').forEach(s => s.classList.add('hidden'));
   $(`#step-${n}`)?.classList.remove('hidden');
-
-  // Update step bar
   $$('.step').forEach(s => {
     const num = parseInt(s.dataset.step);
     s.classList.remove('active', 'done');
     if (num === n) s.classList.add('active');
     if (num < n)  s.classList.add('done');
   });
-
-  // Render content
   if (n === 2) renderCartReview();
   if (n === 3) renderCheckoutSummary();
-
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -394,37 +580,38 @@ function renderCartReview() {
   container.innerHTML = '';
 
   if (state.cart.length === 0) {
-    container.innerHTML = `<p style="padding:28px 24px; color:#8a7a6a; font-style:italic;">Your cart is empty.</p>`;
+    container.innerHTML = `<p style="padding:28px 24px;color:#8a7a6a;font-style:italic;">Your cart is empty.</p>`;
     renderSummaryBlock($('#cart-review-summary'));
     return;
   }
 
+  const sizeNames = { S: 'Small', M: 'Medium', L: 'Large' };
+
   state.cart.forEach((entry, i) => {
+    const unitPrice = itemPrice(entry.item, entry.size);
+    const sizeLabel = entry.size ? ` · ${sizeNames[entry.size]}` : '';
     const row = document.createElement('div');
     row.className = 'cart-item';
     row.innerHTML = `
       <div class="cart-item__info">
-        <div class="cart-item__name">${entry.item.emoji} ${entry.item.name}</div>
+        <div class="cart-item__name">${entry.item.emoji} ${entry.item.name}${sizeLabel}</div>
         ${entry.note ? `<div class="cart-item__note">✏️ ${entry.note}</div>` : ''}
         <button class="cart-item__remove" data-index="${i}">Remove</button>
       </div>
       <div class="cart-item__qty">
         <button class="cart-item__qty-btn" data-action="minus" data-index="${i}">−</button>
         <span class="cart-item__qty-num">${entry.qty}</span>
-        <button class="cart-item__qty-btn" data-action="plus"  data-index="${i}">+</button>
+        <button class="cart-item__qty-btn" data-action="plus" data-index="${i}">+</button>
       </div>
-      <div class="cart-item__price">${fmt(entry.item.price * entry.qty)}</div>
+      <div class="cart-item__price">${fmt(unitPrice * entry.qty)}</div>
     `;
     container.appendChild(row);
   });
 
-  // Event delegation
   container.querySelectorAll('.cart-item__qty-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const idx = parseInt(btn.dataset.index);
-      const delta = btn.dataset.action === 'plus' ? 1 : -1;
-      changeCartQty(idx, delta);
+      changeCartQty(parseInt(btn.dataset.index), btn.dataset.action === 'plus' ? 1 : -1);
     });
   });
   container.querySelectorAll('.cart-item__remove').forEach(btn => {
@@ -437,48 +624,46 @@ function renderCartReview() {
 /* ----------------------------------------
    RENDER CHECKOUT SUMMARY (Step 3)
 ---------------------------------------- */
-function renderCheckoutSummary() {
-  renderSummaryBlock($('#checkout-summary'));
-}
+function renderCheckoutSummary() { renderSummaryBlock($('#checkout-summary')); }
 
 function renderSummaryBlock(el) {
   if (!el) return;
-  const subtotal = getSubtotal();
-  const lines = state.cart.map(e =>
-    `<div class="summary-line"><span>${e.item.emoji} ${e.item.name} × ${e.qty}</span><span>${fmt(e.item.price * e.qty)}</span></div>`
-  ).join('');
+  const sizeNames = { S: 'Small', M: 'Medium', L: 'Large' };
+  const lines = state.cart.map(e => {
+    const unitPrice = itemPrice(e.item, e.size);
+    const sizeLabel = e.size ? ` (${sizeNames[e.size]})` : '';
+    return `<div class="summary-line">
+      <span>${e.item.emoji} ${e.item.name}${sizeLabel} × ${e.qty}</span>
+      <span>${fmt(unitPrice * e.qty)}</span>
+    </div>`;
+  }).join('');
 
   el.innerHTML = `
     <div class="summary-title">Order Summary</div>
     ${lines}
     <div class="summary-line summary-line--delivery">
-      <span>🛵 Delivery Fee</span>
-      <span>${fmt(DELIVERY_FEE)}</span>
+      <span>🛵 Delivery Fee</span><span>${fmt(DELIVERY_FEE)}</span>
     </div>
     <div class="summary-line summary-line--total">
-      <span>Total</span>
-      <span>${fmt(subtotal + DELIVERY_FEE)}</span>
+      <span>Total</span><span>${fmt(getSubtotal() + DELIVERY_FEE)}</span>
     </div>
     <p class="summary-note">Flat R50 delivery fee. No hidden costs. Payment on delivery or via EFT.</p>
   `;
 }
 
 /* ----------------------------------------
-   STEP 2 NAVIGATION BUTTONS
+   STEP BUTTONS
 ---------------------------------------- */
 $('#back-to-menu').addEventListener('click', () => goToStep(1));
-$('#go-to-checkout').addEventListener('click', () => {
-  if (state.cart.length === 0) return;
-  goToStep(3);
-});
-
-/* ----------------------------------------
-   STEP 3 NAVIGATION BUTTONS
----------------------------------------- */
+$('#go-to-checkout').addEventListener('click', () => { if (state.cart.length) goToStep(3); });
 $('#back-to-cart').addEventListener('click', () => goToStep(2));
 
 /* ----------------------------------------
    CHECKOUT FORM SUBMIT
+   WhatsApp link is triggered SYNCHRONOUSLY
+   inside the user gesture — before any
+   setTimeout — so mobile popup blockers
+   cannot intercept it.
 ---------------------------------------- */
 $('#checkout-form').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -499,113 +684,95 @@ $('#checkout-form').addEventListener('submit', (e) => {
   });
   if (!valid) return;
 
-  // --- Build the WhatsApp URL SYNCHRONOUSLY here, while still inside the
-  //     user-gesture (submit event). Mobile browsers block window.open() and
-  //     programmatic navigations that happen inside setTimeout/async callbacks
-  //     because they are no longer traceable to a direct user action. ---
-  const refNum   = 'PK-' + Date.now().toString(36).toUpperCase();
-  const payment  = $('input[name="payment"]:checked')?.value || 'cash';
-  const payLabel = { cash: 'Cash on Delivery', eft: 'EFT / Bank Transfer', card: 'Card on Delivery' }[payment];
+  const refNum    = 'PK-' + Date.now().toString(36).toUpperCase();
+  const payment   = $('input[name="payment"]:checked')?.value || 'cash';
+  const payLabel  = { cash: 'Cash on Delivery', eft: 'EFT / Bank Transfer', card: 'Card on Delivery' }[payment];
+  const sizeNames = { S: 'Small', M: 'Medium', L: 'Large' };
 
-  const cartItems = state.cart
-    .map(e => `• ${e.item.name} x${e.qty} (${fmt(e.item.price * e.qty)})${e.note ? ` — Note: ${e.note}` : ''}`)
+  const cartLines = state.cart
+    .map(e => {
+      const sizeLabel = e.size ? ` (${sizeNames[e.size]})` : '';
+      return `• ${e.item.name}${sizeLabel} ×${e.qty} — ${fmt(itemPrice(e.item, e.size) * e.qty)}${e.note ? ` [${e.note}]` : ''}`;
+    })
     .join('\n');
 
-  const whatsappMessage =
+  const msg =
     `*New Order — Pappa's Kitchen*\n\n` +
     `Ref: ${refNum}\n` +
     `Name: ${name}\n` +
     `Phone: ${phone}\n` +
     `Address: ${address}\n` +
     `Payment: ${payLabel}\n\n` +
-    `*Order:*\n${cartItems}\n\n` +
+    `*Order:*\n${cartLines}\n\n` +
     `Delivery fee: R50\n` +
     `*Total: ${fmt(getTotal())}*`;
 
-  const whatsappUrl = `https://wa.me/27721868282?text=${encodeURIComponent(whatsappMessage)}`;
-
-  // Use a hidden <a> element and .click() it synchronously — this is the most
-  // reliable cross-browser technique for deep-links on mobile. Unlike
-  // window.open(), an <a> click is always treated as a user-initiated navigation
-  // and is never intercepted by popup blockers.
+  // Trigger WhatsApp SYNCHRONOUSLY (within the user gesture) via hidden <a>.
+  // This is the only reliably unblocked method on mobile browsers.
   const wa = document.createElement('a');
-  wa.href     = whatsappUrl;
-  wa.target   = '_blank';
-  wa.rel      = 'noopener noreferrer';
+  wa.href   = `https://wa.me/27721868282?text=${encodeURIComponent(msg)}`;
+  wa.target = '_blank';
+  wa.rel    = 'noopener noreferrer';
   wa.style.display = 'none';
   document.body.appendChild(wa);
   wa.click();
-  // Clean up the element after the browser has processed the click
   setTimeout(() => wa.remove(), 500);
 
-  // Disable the submit button and show the loading state
+  // UI update — safe to defer from here
   const btn = $('#place-order-btn');
-  btn.textContent = 'Placing order…';
-  btn.disabled = true;
+  btn.textContent   = 'Placing order…';
+  btn.disabled      = true;
   btn.style.opacity = '0.7';
 
-  // UI transition — safe to defer; no navigation happens here
   setTimeout(() => {
     $$('.order-step').forEach(s => s.classList.add('hidden'));
     $('#step-confirm').classList.remove('hidden');
     $('#cart-fab').classList.add('hidden');
-
     $$('.step').forEach(s => { s.classList.remove('active'); s.classList.add('done'); });
-
     $('#confirm-body').innerHTML = `
       Thank you, <strong>${name}</strong>! Your order details have been sent to WhatsApp — please tap <em>Send</em> in the app to confirm your order with us.<br/><br/>
       Payment: <strong>${payLabel}</strong>. Delivery to: <em>${address}</em>.
     `;
     $('#confirm-ref').textContent = `Order Reference: ${refNum}`;
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, 1400);
 });
 
 /* ----------------------------------------
-   NEW ORDER BUTTON (on confirmation)
+   NEW ORDER BUTTON
 ---------------------------------------- */
 document.getElementById('new-order-btn').addEventListener('click', () => {
   state.cart = [];
-  goToStep(1);
   updateCartFab();
   $$('.step').forEach(s => s.classList.remove('active', 'done'));
   $$('.step')[0].classList.add('active');
-  $('#step-confirm').classList.add('hidden');
+  $$('.order-step').forEach(s => s.classList.add('hidden'));
   $('#step-1').classList.remove('hidden');
+  state.currentStep = 1;
 });
 
 /* ----------------------------------------
-   CATEGORY NAV — active highlight on scroll
+   CATEGORY NAV — highlight on scroll
 ---------------------------------------- */
 function updateCatNav() {
-  const cats = $$('.menu-cat');
+  const cats  = $$('.menu-cat');
   const links = $$('.cat-nav__link');
   let current = '';
-
   cats.forEach(cat => {
-    const top = cat.getBoundingClientRect().top;
-    if (top < 160) current = cat.id;
+    if (cat.getBoundingClientRect().top < 160) current = cat.id;
   });
-
   links.forEach(link => {
-    const href = link.getAttribute('href').replace('#', '');
-    link.classList.toggle('active', href === current);
+    link.classList.toggle('active', link.getAttribute('href').replace('#', '') === current);
   });
 }
-
-// Only attach scroll listener if we're on step 1
-document.getElementById('menu-items')?.addEventListener('scroll', updateCatNav);
 window.addEventListener('scroll', updateCatNav, { passive: true });
+document.getElementById('menu-items')?.addEventListener('scroll', updateCatNav);
 
-// Smooth scroll for cat nav links
 $$('.cat-nav__link').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    document.querySelector(link.getAttribute('href'))
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 

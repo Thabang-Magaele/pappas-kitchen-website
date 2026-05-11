@@ -15,8 +15,7 @@
   <!-- NAV -->
   <nav class="nav scrolled" id="nav">
     <a class="nav__logo" href="index.html">
-      <span class="nav__logo-icon">🍕</span>
-      <span class="nav__logo-text">Pappa's Kitchen</span>
+      <img src="images/logo.png" alt="Pappa's Kitchen" class="nav__logo-img" />
     </a>
     <ul class="nav__links" id="nav-links">
       <li><a href="index.html#menu">Menu</a></li>
@@ -71,11 +70,14 @@
         <aside class="cat-nav" id="cat-nav">
           <p class="cat-nav__title">Categories</p>
           <ul>
-            <li><a href="#cat-pizza"   class="cat-nav__link active">🍕 Pizza</a></li>
-            <li><a href="#cat-pasta"   class="cat-nav__link">🍝 Pasta</a></li>
-            <li><a href="#cat-mains"   class="cat-nav__link">🥗 Mains &amp; Salads</a></li>
-            <li><a href="#cat-extras"  class="cat-nav__link">🥖 Extras &amp; Sides</a></li>
-           <!-- <li><a href="#cat-drinks"  class="cat-nav__link">🥤 Drinks</a></li>-->
+            <li><a href="#cat-pizza"     class="cat-nav__link active">🍕 Pizzas</a></li>
+            <li><a href="#cat-vegpizza"  class="cat-nav__link">🥦 Vegetarian Pizza</a></li>
+            <li><a href="#cat-chickpizza"class="cat-nav__link">🍗 Chicken Pizza</a></li>
+            <li><a href="#cat-pasta"     class="cat-nav__link">🍝 Pasta</a></li>
+            <li><a href="#cat-salads"    class="cat-nav__link">🥗 Salads</a></li>
+            <li><a href="#cat-burgers"   class="cat-nav__link">🍔 Burgers &amp; Shawarmas</a></li>
+            <li><a href="#cat-chicken"   class="cat-nav__link">🍗 Roast Chicken</a></li>
+            <li><a href="#cat-focaccia"  class="cat-nav__link">🍞 Focaccia</a></li>
           </ul>
           <div class="cat-nav__note">
             <span></span>
@@ -86,11 +88,25 @@
         <!-- MENU ITEMS -->
         <div class="menu-items" id="menu-items">
 
-          <!-- PIZZA -->
+        <!-- PIZZAS (MEAT) -->
           <div class="menu-cat" id="cat-pizza">
-            <h2 class="menu-cat__title">🍕 Pizza</h2>
-            <p class="menu-cat__sub">Wood-fired, crisp base, generous toppings</p>
+            <h2 class="menu-cat__title">🍕 Pizzas</h2>
+            <p class="menu-cat__sub">All our pizzas are made with Italian inspiration · Available in Small, Medium &amp; Large</p>
             <div class="item-grid" id="items-pizza"></div>
+          </div>
+
+          <!-- VEGETARIAN PIZZA -->
+          <div class="menu-cat" id="cat-vegpizza">
+            <h2 class="menu-cat__title">🥦 Vegetarian Pizza</h2>
+            <p class="menu-cat__sub">Available in Small, Medium &amp; Large</p>
+            <div class="item-grid" id="items-vegpizza"></div>
+          </div>
+
+          <!-- CHICKEN PIZZA -->
+          <div class="menu-cat" id="cat-chickpizza">
+            <h2 class="menu-cat__title">🍗 Chicken Pizza</h2>
+            <p class="menu-cat__sub">Available in Small, Medium &amp; Large</p>
+            <div class="item-grid" id="items-chickpizza"></div>
           </div>
 
           <!-- PASTA -->
@@ -100,27 +116,33 @@
             <div class="item-grid" id="items-pasta"></div>
           </div>
 
-          <!-- MAINS -->
-          <div class="menu-cat" id="cat-mains">
-            <h2 class="menu-cat__title">🥗 Mains &amp; Salads</h2>
-            <p class="menu-cat__sub">Fresh, filling, and full of flavour</p>
-            <div class="item-grid" id="items-mains"></div>
+          <!-- SALADS -->
+          <div class="menu-cat" id="cat-salads">
+            <h2 class="menu-cat__title">🥗 Salads</h2>
+            <p class="menu-cat__sub">Fresh, crisp and full of flavour</p>
+            <div class="item-grid" id="items-salads"></div>
           </div>
 
-          <!-- EXTRAS -->
-          <div class="menu-cat" id="cat-extras">
-            <h2 class="menu-cat__title">🥖 Extras &amp; Sides</h2>
-            <p class="menu-cat__sub">The perfect accompaniments</p>
-            <div class="item-grid" id="items-extras"></div>
+          <!-- BURGERS & SHAWARMAS -->
+          <div class="menu-cat" id="cat-burgers">
+            <h2 class="menu-cat__title">🍔 Burgers &amp; Shawarmas</h2>
+            <p class="menu-cat__sub">Shawarmas served in fresh oven-baked pita with coleslaw &amp; Pappa's Schwarma Sauce</p>
+            <div class="item-grid" id="items-burgers"></div>
           </div>
 
-          <!-- DRINKS 
-          <div class="menu-cat" id="cat-drinks">
-            <h2 class="menu-cat__title">🥤 Drinks</h2>
-            <p class="menu-cat__sub">Cold beverages to complete your meal</p>
-            <div class="item-grid" id="items-drinks"></div>
+          <!-- ROAST CHICKEN -->
+          <div class="menu-cat" id="cat-chicken">
+            <h2 class="menu-cat__title">🍗 Roast Chicken</h2>
+            <p class="menu-cat__sub">Slow roasted in our wood-burning oven, served with chips, pasta or pap and side salad</p>
+            <div class="item-grid" id="items-chicken"></div>
           </div>
--->
+
+          <!-- FOCACCIA -->
+          <div class="menu-cat" id="cat-focaccia">
+            <h2 class="menu-cat__title">🍞 Focaccia</h2>
+            <p class="menu-cat__sub">Available in Small, Medium &amp; Large</p>
+            <div class="item-grid" id="items-focaccia"></div>
+          </div>
         </div><!-- /menu-items -->
 
       </div><!-- /menu-browser -->
@@ -269,6 +291,12 @@
         <textarea id="modal-note" rows="2" placeholder="e.g. extra cheese, no olives…"></textarea>
       </div>
 
+      <!-- SIZE SELECTOR — shown only for items with S/M/L pricing -->
+      <div class="modal__sizes hidden" id="modal-sizes">
+        <p class="modal__sizes-label">Select size</p>
+        <div class="modal__sizes-row" id="modal-sizes-row"></div>
+      </div>
+
       <div class="modal__qty">
         <button class="qty-btn" id="modal-qty-minus">−</button>
         <span class="qty-val" id="modal-qty-val">1</span>
@@ -283,7 +311,7 @@
   <footer class="footer">
     <div class="footer__inner container">
       <div class="footer__brand">
-        <span class="footer__logo">🍕 Pappa's Kitchen</span>
+        <img src="images/logo.png" alt="Pappa's Kitchen" class="footer__logo-img" />
         <p>Wood-fired pizza &amp; pasta<br/>in Nelspruit since 1989.</p>
       </div>
       <div class="footer__links">

@@ -761,8 +761,74 @@
 }
 
 /* ========================
-   RESPONSIVE
+   SIZE SELECTOR (modal)
    ======================== */
+.modal__sizes { margin-bottom: 20px; }
+.modal__sizes.hidden { display: none; }
+.modal__sizes-label {
+  font-family: var(--font-stamp);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a7a6a;
+  margin-bottom: 10px;
+}
+.modal__sizes-row {
+  display: flex;
+  gap: 10px;
+}
+.size-opt { cursor: pointer; flex: 1; }
+.size-opt input[type="radio"] { display: none; }
+.size-opt__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 10px;
+  background: var(--cream);
+  transition: all var(--trans);
+  text-align: center;
+}
+.size-opt input:checked + .size-opt__box {
+  border-color: var(--terracotta);
+  background: rgba(192,82,43,0.07);
+  box-shadow: 0 0 0 3px rgba(192,82,43,0.12);
+}
+.size-opt__key {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--charcoal);
+  line-height: 1;
+}
+.size-opt input:checked + .size-opt__box .size-opt__key {
+  color: var(--terracotta);
+}
+.size-opt__name {
+  font-family: var(--font-stamp);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: #8a7a6a;
+}
+.size-opt__price {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--terracotta);
+}
+
+/* Show size badge on item card when applicable */
+.item-card__sizes {
+  font-family: var(--font-stamp);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: #8a7a6a;
+  margin-top: 2px;
+}
+
+
 @media (max-width: 960px) {
   .checkout-layout { grid-template-columns: 1fr; }
   .checkout-summary { position: static; }
